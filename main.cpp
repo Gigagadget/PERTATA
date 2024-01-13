@@ -10,6 +10,9 @@ int main()
 	//Player *PL1 = new Player("Amir");
 	Player Player1("Amir");
 	Property p2(2);
+	Property P1(1);
+
+
 
 	//cout << PL1->getName() << endl;
 	//p2->buyLand(PL1);
