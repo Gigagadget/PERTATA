@@ -1,4 +1,4 @@
-﻿#include "Property.h"
+#include "Property.h"
 
 	int Property::getCategory() {
 		return Category;
@@ -75,8 +75,10 @@
 	}
 	void Property::buyHouse() {
 		if (Category == 3) { throw "Nothing to buy over here."; }
-		Status = 2;
-		updateRentPrice();
+		if (true) {
+			Status = 2;
+			updateRentPrice();
+		}
 	}
 	
 	//bisognerebbe controllare che in tutti i buy io non abbia gia lo stesso status... cioe
@@ -85,8 +87,10 @@
 	 //devi controllare che abbia prima comprato una casa
 	void Property::buyHotel() {
 		if (Category == 3) { throw "Nothing to buy over here."; }
-		Status = 3;
-		updateRentPrice();
+		if (true) {
+			Status = 3;
+			updateRentPrice();
+		}
 	}
 	void Property::ripPlayer() {
 		Status = 0;
@@ -126,6 +130,11 @@
 	}
 
 	std::ostream& operator<<(std::ostream& output, const Property& P) {
-		output << "Prezzo affitto: " << P.RentPrice;
+		output << "Categoria casella: ";
+		if (P.Category == 0) { output << "Casella Economica"; };
+		if (P.Category == 1) { output << "Casella Standard"; };
+		if (P.Category == 2) { output << "Casella Lusso"; };
+		if (P.Category == 3) { output << "Casella Angolare"; return output; };
+		output 	<< "  Prezzo affitto: " << P.RentPrice << "  Prezzo Terreno: " << P.BuyPrice << "  Prezzo casa: " << P.HousePrice << "  Prezzo Albergo: " << P.HotelPrice << "  Stato casella: " << P.Status;
 		return output;
 	}
